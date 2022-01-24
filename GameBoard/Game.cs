@@ -24,13 +24,13 @@ namespace GameBoard
             for (int i = 0; i < 5; i++)
             {
 
-                if (word.Contains(guess[i]) && word[i] != guess[i] ) 
+                if (word.Contains(char.ToUpper(guess[i])) && word[i] != char.ToUpper(guess[i])) 
                 {
                     Correct = false;
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
                 }
 
-                else if (guess[i] == word[i])
+                else if (char.ToUpper(guess[i]) == word[i])
                 {
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Right));
                 }
