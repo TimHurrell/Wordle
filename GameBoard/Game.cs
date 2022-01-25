@@ -14,19 +14,18 @@ namespace GameBoard
 {
     public class Row
     {
-        public bool Correct { get; set; }
         public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
 
 
-        public void Mark(string word,string guess)
+        public bool Mark(string word,string guess)
         {
-            Correct = true;
+            bool GuessCorrect = true;
             for (int i = 0; i < 5; i++)
             {
 
                 if (word.Contains(char.ToUpper(guess[i])) && word[i] != char.ToUpper(guess[i])) 
                 {
-                    Correct = false;
+                    GuessCorrect = false;
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
                 }
 
@@ -38,14 +37,27 @@ namespace GameBoard
 
                 else
                 {
-                    Correct = false;
+                    GuessCorrect = false;
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Wrong));
                 }
 
 
             }
+            return GuessCorrect;
 
         }
+
+
+
+
+    }
+
+
+
+    public class Board
+    {
+        public string  Answer{ get; set; } 
+        public List<string> Guess { get; set; } = new List<string>();
 
     }
 }
