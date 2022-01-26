@@ -58,6 +58,25 @@ namespace GameBoard
     {
         public string  Answer{ get; set; } 
         public List<string> Guess { get; set; } = new List<string>();
+        public bool GuessCorrect { get; set; }
+        public Row Row { get; set; }
+
+
+        public Board() { }
+        public Board(Row rowfromrowclass, string answer)
+        {
+            Answer = answer;
+            Row = rowfromrowclass;
+        }
+        public void MarkGuess(string guess)
+        {
+            if (Guess.Count < 6 && !GuessCorrect)
+            {
+                Guess.Add(guess);
+                GuessCorrect = Row.Mark(Answer, guess);
+                    
+            }
+        }
 
     }
 }
