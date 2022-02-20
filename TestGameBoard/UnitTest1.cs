@@ -93,10 +93,25 @@ namespace TestGameBoard
 
             _board.MarkGuess("FILES");
             bool test1 = _board.GuessCorrect;
+            Assert.False(test1);
+
+            Assert.Equal(Mark.Wrong, _board.Row.MarkedGuess[0].Value);
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[1].Value);
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[2].Value);
+            Assert.Equal(Mark.Wrong, _board.Row.MarkedGuess[3].Value);
+            Assert.Equal(Mark.Wrong, _board.Row.MarkedGuess[4].Value);
+
             _board.MarkGuess("PILOT");
             bool test2 = _board.GuessCorrect;
 
-            Assert.False(test1);
+
+
+
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[0].Value);
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[1].Value);
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[2].Value);
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[3].Value);
+            Assert.Equal(Mark.Right, _board.Row.MarkedGuess[4].Value);
             Assert.True(test2);
             Assert.Equal(2, _board.Guess.Count);
         }

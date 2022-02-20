@@ -20,6 +20,7 @@ namespace GameBoard
         public bool Mark(string word,string guess)
         {
             bool GuessCorrect = true;
+            MarkedGuess.Clear();
             for (int i = 0; i < 5; i++)
             {
 
