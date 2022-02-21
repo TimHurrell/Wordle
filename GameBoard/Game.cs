@@ -65,16 +65,16 @@ namespace GameBoard
 
 
         public Board() { }
-        public Board(Row rowfromrowclass, string answer)
+        public Board(string answer)
         {
             Answer = answer;
-            ListOfRows.Add(rowfromrowclass);
         }
-        public void MarkGuess(string guess)
+        public void MarkGuess(string guess, Row rowfromrowclass)
         {
-            if (Guess.Count < 6 && !GuessCorrect)
+            if (Guess.Count < 5 && !GuessCorrect)
             {
                 Guess.Add(guess);
+                ListOfRows.Add(rowfromrowclass);
                 GuessCorrect = ListOfRows[Guess.Count - 1].Mark(Answer, guess);
                     
             }
