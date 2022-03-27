@@ -1,5 +1,4 @@
 using GameBoard;
-using System;
 using Xunit;
 
 namespace TestGameBoard
