@@ -18,23 +18,27 @@ namespace GameBoard
 
 
         public bool Mark(string word,string guess)
+        //public void Mark(string word, string guess)
         {
             bool GuessCorrect = true;
             MarkedGuess.Clear();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < guess.Length; i++)
             {
                 char UppedCharacter = char.ToUpper(guess[i]);
 
-                if (word.Contains(UppedCharacter) && word[i] != UppedCharacter) 
+
+
+                if (UppedCharacter == word[i])
+                {
+                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Right));
+                }
+
+                else if (word.Contains(UppedCharacter) && word[i] != UppedCharacter) 
                 {
                     GuessCorrect = false;
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
                 }
 
-                else if (UppedCharacter == word[i])
-                {
-                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Right));
-                }
 
 
                 else
@@ -97,15 +101,6 @@ the set can be made private as you will not be modifying this externally. This i
 
 /* change
 
-for (int i = 0; i < 5; i++)
-
-to
-
-for (int i = 0; i < guess.length; i++)
-
-    you might decide to do 6 letter words one day. This makes your code more flexible without compromising anything.
-
-if you swap you if clauses around, so you go from most specific to least specific I think you can simplify them slightly.
 
 I don't think the method actually needs to return anything.
 You can access MarkedGuess List to do this. */
