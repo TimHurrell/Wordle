@@ -17,10 +17,10 @@ namespace GameBoard
         public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
 
 
-        public bool Mark(string word,string guess)
-        //public void Mark(string word, string guess)
+        // public bool Mark(string word,string guess)
+        public void Mark(string word, string guess)
         {
-            bool GuessCorrect = true;
+            //bool GuessCorrect = true;
             MarkedGuess.Clear();
             for (int i = 0; i < guess.Length; i++)
             {
@@ -35,7 +35,7 @@ namespace GameBoard
 
                 else if (word.Contains(UppedCharacter) && word[i] != UppedCharacter) 
                 {
-                    GuessCorrect = false;
+                    //GuessCorrect = false;
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
                 }
 
@@ -43,13 +43,13 @@ namespace GameBoard
 
                 else
                 {
-                    GuessCorrect = false;
+                    //GuessCorrect = false;
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Wrong));
                 }
 
 
             }
-            return GuessCorrect;
+            //return GuessCorrect;
 
         }
 
@@ -64,7 +64,7 @@ namespace GameBoard
     {
         public string  Answer{ get; set; } 
         public List<string> Guess { get; set; } = new List<string>();
-        public bool GuessCorrect { get; set; }
+        public bool GuessCorrect { get; set; } = false;
         //public Row Row { get; set; }
         public List<Row> ListOfRows { get; set; } = new List<Row>();
 
@@ -80,7 +80,9 @@ namespace GameBoard
             {
                 Guess.Add(guess);
                 ListOfRows.Add(rowfromrowclass);
-                GuessCorrect = ListOfRows[Guess.Count - 1].Mark(Answer, guess);
+                //GuessCorrect = ListOfRows[Guess.Count - 1].Mark(Answer, guess);
+
+                // if all 5 letters correct then make Guescorrect = true.
                     
             }
         }

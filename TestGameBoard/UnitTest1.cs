@@ -12,14 +12,15 @@ namespace TestGameBoard
         public void MarkRowAllWrong()
         {
             Row _row = new Row();
-            bool test = _row.Mark("PILOT", "AHEAD");
+            //bool test = _row.Mark("PILOT", "AHEAD");
+            _row.Mark("PILOT", "AHEAD");
 
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[0].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            Assert.False(test);
+            //Assert.False(GuessCorrect(_row));
         }
 
 
@@ -27,14 +28,14 @@ namespace TestGameBoard
         public void MarkRowRightLetterWrongAndRightPosition()
         {
             Row _row = new Row();
-            bool test = _row.Mark("PILOT", "TIMER");
+            _row.Mark("PILOT", "TIMER");
 
             Assert.Equal(Mark.Partial, _row.MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            Assert.False(test);
+            //Assert.False(test);
         }
 
 
@@ -42,14 +43,14 @@ namespace TestGameBoard
         public void MarkRowAllCorrectBarOne()
         {
             Row _row = new Row();
-            bool test = _row.Mark("FILES", "Filed");
+            _row.Mark("FILES", "Filed");
 
             Assert.Equal(Mark.Right, _row.MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            Assert.False(test);
+            //Assert.False(test);
         }
 
 
@@ -57,14 +58,14 @@ namespace TestGameBoard
         public void MarkRowAllCorrectBarOneLowerCase()
         {
             Row _row = new Row();
-            bool test = _row.Mark("PILOT", "PILOt");
+            _row.Mark("PILOT", "PILOt");
 
             Assert.Equal(Mark.Right, _row.MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
-            Assert.True(test);
+            //Assert.True(test);
         }
 
 
@@ -72,7 +73,7 @@ namespace TestGameBoard
         public void MarkRowAllCorrect()
         {
             Row _row = new Row();
-            bool test = _row.Mark("PILOT", "PILOT");
+            _row.Mark("PILOT", "PILOT");
 
 
             Assert.Equal(Mark.Right, _row.MarkedGuess[0].Value);
@@ -80,7 +81,7 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
-            Assert.True(test);
+            //Assert.True(test);
         }
 
 
