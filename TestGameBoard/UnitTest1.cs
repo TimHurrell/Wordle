@@ -35,7 +35,7 @@ namespace TestGameBoard
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            //Assert.False(test);
+
         }
 
 
@@ -90,12 +90,14 @@ namespace TestGameBoard
         {
             Row _row1 = new Row();
             Board _board = new Board("PILOT");
+            string guess = "FILES";
             
 
-            _board.MarkGuess("FILES", _row1);
-            _board.ListOfRows[0].Mark("PILOT", "FILES");
-            bool test1 = _board.GuessCorrect;
-            Assert.False(test1);
+           _board.TakeGuess(guess, _row1);
+
+            Assert.Single(_board.Guess);
+            _board.ListOfRows[0].Mark(_board.Answer, guess);
+
 
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[0].MarkedGuess[1].Value);
@@ -103,12 +105,17 @@ namespace TestGameBoard
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[4].Value);
 
+            _board.AssessGuess();
+            bool test1 = _board.GuessCorrect;
+            Assert.False(test1);
+
 
 
             Row _row2 = new Row();
-            _board.MarkGuess("PILOT", _row2);
+            _board.TakeGuess("PILOT", _row2);
             _board.ListOfRows[1].Mark("PILOT", "PILOT");
-            bool test2 = _board.GuessCorrect;
+            Assert.Equal(2, _board.Guess.Count);
+
 
 
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[0].Value);
@@ -116,8 +123,11 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[4].Value);
-            //Assert.True(test2);
-            Assert.Equal(2, _board.Guess.Count);
+
+            _board.AssessGuess();
+            bool test2 = _board.GuessCorrect;
+            Assert.True(test2);
+            
         }
 
     }

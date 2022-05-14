@@ -74,16 +74,36 @@ namespace GameBoard
         {
             Answer = answer;
         }
-        public void MarkGuess(string guess, Row rowfromrowclass)
+        public void TakeGuess(string guess, Row rowfromrowclass)
         {
             if (Guess.Count < 5 && !GuessCorrect)
             {
                 Guess.Add(guess);
                 ListOfRows.Add(rowfromrowclass);
-                //GuessCorrect = ListOfRows[Guess.Count - 1].Mark(Answer, guess);
+                //if (ListOfRows[0].MarkedGuess[0].Value == Mark.Right)
+                //{
+                //    GuessCorrect = true;
+                //} 
 
-                // if all 5 letters correct then make Guescorrect = true.
-                    
+
+
+
+            }
+        }
+
+        public void AssessGuess()
+        {
+            if (!GuessCorrect)
+            {
+
+                if (ListOfRows[Guess.Count - 1].MarkedGuess[0].Value == Mark.Right)
+                {
+                    GuessCorrect = true;
+                } 
+
+
+
+
             }
         }
 
