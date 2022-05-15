@@ -80,11 +80,7 @@ namespace GameBoard
             {
                 Guess.Add(guess);
                 ListOfRows.Add(rowfromrowclass);
-                //if (ListOfRows[0].MarkedGuess[0].Value == Mark.Right)
-                //{
-                //    GuessCorrect = true;
-                //} 
-
+              
 
 
 
@@ -96,7 +92,12 @@ namespace GameBoard
             if (!GuessCorrect)
             {
 
-                if (ListOfRows[Guess.Count - 1].MarkedGuess[0].Value == Mark.Right)
+                if (ListOfRows[Guess.Count - 1].MarkedGuess[0].Value == Mark.Right
+                    && ListOfRows[Guess.Count - 1].MarkedGuess[1].Value == Mark.Right
+                    && ListOfRows[Guess.Count - 1].MarkedGuess[2].Value == Mark.Right
+                    && ListOfRows[Guess.Count - 1].MarkedGuess[3].Value == Mark.Right
+                    && ListOfRows[Guess.Count - 1].MarkedGuess[4].Value == Mark.Right
+                    )
                 {
                     GuessCorrect = true;
                 } 
