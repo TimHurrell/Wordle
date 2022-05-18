@@ -16,11 +16,9 @@ namespace GameBoard
     {
         public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
 
-
-        // public bool Mark(string word,string guess)
         public void Mark(string word, string guess)
         {
-            //bool GuessCorrect = true;
+            
             MarkedGuess.Clear();
             for (int i = 0; i < guess.Length; i++)
             {
@@ -35,22 +33,19 @@ namespace GameBoard
 
                 else if (word.Contains(UppedCharacter) && word[i] != UppedCharacter) 
                 {
-                    //GuessCorrect = false;
-                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
+                   MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
                 }
 
 
 
                 else
                 {
-                    //GuessCorrect = false;
-                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Wrong));
+                   MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Wrong));
                 }
 
 
             }
-            //return GuessCorrect;
-
+          
         }
 
 
@@ -80,10 +75,6 @@ namespace GameBoard
             {
                 Guess.Add(guess);
                 ListOfRows.Add(rowfromrowclass);
-              
-
-
-
             }
         }
 
@@ -120,11 +111,4 @@ the set can be made private as you will not be modifying this externally. This i
 
  */
 
-
-
-/* change
-
-
-I don't think the method actually needs to return anything.
-You can access MarkedGuess List to do this. */
 
