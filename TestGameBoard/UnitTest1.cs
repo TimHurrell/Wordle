@@ -89,7 +89,7 @@ namespace TestGameBoard
         public void GameBoardFirstRowIncorrectSecondRowCorrect()
         {
             Row _row1 = new Row();
-            Board _board = new Board("PILOT");
+            Board _board = new Board("PILOT",5);
             string guess = "FILES";
             
 
@@ -128,6 +128,50 @@ namespace TestGameBoard
             bool test2 = _board.GuessCorrect;
             Assert.True(test2);
             
+        }
+
+        [Fact]
+        public void TooManyGoesOnlyAllowedOneGo()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("PILOT",1);
+            string guess = "FILES";
+
+
+            _board.TakeGuess(guess, _row1);
+
+            Assert.Single(_board.Guess);
+            _board.ListOfRows[0].Mark(_board.Answer, guess);
+
+
+
+            Row _row2 = new Row();
+            _board.TakeGuess("PILOT", _row2);
+
+            Assert.True(_board.ExceededNumberOfGoes);
+
+        }
+
+        [Fact]
+        public void OnlyAllowedTwoGoes()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("PILOT", 2);
+            string guess = "FILES";
+
+
+            _board.TakeGuess(guess, _row1);
+
+            Assert.Single(_board.Guess);
+            _board.ListOfRows[0].Mark(_board.Answer, guess);
+
+
+
+            Row _row2 = new Row();
+            _board.TakeGuess("PILOT", _row2);
+
+            Assert.False(_board.ExceededNumberOfGoes);
+
         }
 
     }

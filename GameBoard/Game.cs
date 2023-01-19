@@ -57,25 +57,31 @@ namespace GameBoard
 
     public class Board
     {
+        public bool ExceededNumberOfGoes { get; set; } = false;
+
+        public int NumberOfGoesAllowed;
+
         public string  Answer{ get; set; } 
         public List<string> Guess { get; set; } = new List<string>();
         public bool GuessCorrect { get; set; } = false;
-        //public Row Row { get; set; }
         public List<Row> ListOfRows { get; set; } = new List<Row>();
 
 
         public Board() { }
-        public Board(string answer)
+        public Board(string answer, int numberOfGoesAllowed)
         {
             Answer = answer;
+            NumberOfGoesAllowed = numberOfGoesAllowed;
         }
         public void TakeGuess(string guess, Row rowfromrowclass)
         {
-            if (Guess.Count < 5 && !GuessCorrect)
+            if (Guess.Count < NumberOfGoesAllowed && !GuessCorrect)
             {
                 Guess.Add(guess);
                 ListOfRows.Add(rowfromrowclass);
             }
+            else
+            { ExceededNumberOfGoes = true; }
         }
 
         public void AssessGuess()
