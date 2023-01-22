@@ -1,7 +1,7 @@
 ﻿
+using System;
 using System.Collections.Generic;
-
-
+using System.Linq;
 
 public enum Mark
 {
@@ -105,6 +105,11 @@ namespace GameBoard
             }
         }
 
+        public bool SameAsPreviousGo(string guess)
+        {
+            return Guess.Any(s => s == guess);
+
+        }
     }
 }
 

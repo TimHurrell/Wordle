@@ -108,6 +108,7 @@ namespace TestGameBoard
             _board.AssessGuess();
             bool test1 = _board.GuessCorrect;
             Assert.False(test1);
+            Assert.Contains("FILES", _board.Guess[0]);
 
 
 
@@ -128,6 +129,7 @@ namespace TestGameBoard
             bool test2 = _board.GuessCorrect;
             Assert.True(test2);
             
+
         }
 
         [Fact]
@@ -153,7 +155,7 @@ namespace TestGameBoard
         }
 
         [Fact]
-        public void OnlyAllowedTwoGoes()
+        public void OnlyAllowedTwoGoesOK()
         {
             Row _row1 = new Row();
             Board _board = new Board("PILOT", 2);
@@ -171,6 +173,103 @@ namespace TestGameBoard
             _board.TakeGuess("PILOT", _row2);
 
             Assert.False(_board.ExceededNumberOfGoes);
+
+        }
+
+
+        [Fact]
+        public void OnlyAllowedTwoGoesChoicesSame()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("PILOT", 2);
+            string guess1 = "FILES";
+
+
+            _board.TakeGuess(guess1, _row1);
+
+
+
+            Row _row2 = new Row();
+            string guess2 = "FILES";
+
+            Assert.True(_board.SameAsPreviousGo(guess2));
+
+        }
+
+        [Fact]
+        public void OnlyAllowedTwoGoesChoicesDifferent()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("PILOT", 2);
+            string guess1 = "FILES";
+
+
+
+            _board.TakeGuess(guess1, _row1);
+            Assert.Contains("FILES", _board.Guess[0]);
+
+
+            Row _row2 = new Row();
+            string guess2 = "PILOT";
+
+            Assert.False(_board.SameAsPreviousGo(guess2));
+
+        }
+        [Fact]
+        public void OnlyAllowedFourGoesChoicesDifferent()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("PILOT", 2);
+            string guess = "FILES";
+
+
+
+            _board.TakeGuess(guess, _row1);
+
+
+
+            Row _row2 = new Row();
+            guess = "PILET";
+            _board.TakeGuess(guess, _row2);
+
+            Row _row3 = new Row();
+            guess = "PILEE";
+            _board.TakeGuess(guess, _row3);
+
+            Row _row4 = new Row();
+            guess = "PIEET";
+ 
+
+            Assert.False(_board.SameAsPreviousGo(guess));
+
+        }
+
+        [Fact]
+        public void OnlyAllowedFourGoesChoicesSame()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("PILOT", 2);
+            string guess = "FILES";
+
+
+
+            _board.TakeGuess(guess, _row1);
+
+
+
+            Row _row2 = new Row();
+            guess = "PILET";
+            _board.TakeGuess(guess, _row2);
+
+            Row _row3 = new Row();
+            guess = "PILEE";
+            _board.TakeGuess(guess, _row3);
+
+            Row _row4 = new Row();
+            guess = "PILET";
+
+
+            Assert.True(_board.SameAsPreviousGo(guess));
 
         }
 
