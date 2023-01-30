@@ -111,6 +111,19 @@ namespace GameBoard
 
         }
     }
+
+    public class WordGenerator
+    {
+        public string answer;
+        public int len;
+
+        public WordGenerator(string v1, int v2)
+        {
+            answer = v1;
+            len = v2;
+        }
+    }
+
 }
 
 

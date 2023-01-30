@@ -273,6 +273,18 @@ namespace TestGameBoard
 
         }
 
+        [Fact]
+        public void FiveLetterWord()
+        {
+            WordGenerator _word = new WordGenerator("PILOT", 5);
+
+
+
+            Assert.Equal(_word.len, _word.answer.Length);
+            Assert.Equal("PILOT", _word.answer);
+
+        }
+
     }
 
 }
