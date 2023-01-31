@@ -1,4 +1,5 @@
 using GameBoard;
+using System.Collections.Generic;
 using Xunit;
 
 namespace TestGameBoard
@@ -273,15 +274,43 @@ namespace TestGameBoard
 
         }
 
+
+
         [Fact]
-        public void FiveLetterWord()
+        public void FiveLetterWordFromList()
         {
-            WordGenerator _word = new WordGenerator("PILOT", 5);
+            List<string> wordList = new List<string>()
+                    {
+                        "PILOT",
+                        "PILOTS"
+                    };
+            WordGenerator _word = new WordGenerator(wordList, 5);
 
 
 
             Assert.Equal(_word.len, _word.answer.Length);
             Assert.Equal("PILOT", _word.answer);
+
+        }
+
+
+        [Fact]
+        public void ListContainsOnlyFiveLetterWords()
+        {
+            List<string> wordList = new List<string>()
+                    {
+                        "PILOT",
+                        "PILOTS",
+                        "PILOZ",
+                        "PILOTZ"
+                    };
+            WordGenerator _word = new WordGenerator(wordList, 5);
+            _word.RemoveWrongLength();
+
+
+
+            Assert.Equal("PILOTS", _word.wordList[0]);
+            Assert.Equal("PILOTZ", _word.wordList[1]);
 
         }
 

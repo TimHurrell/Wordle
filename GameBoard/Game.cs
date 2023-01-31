@@ -115,13 +115,27 @@ namespace GameBoard
     public class WordGenerator
     {
         public string answer;
+        public List<string> wordList;
         public int len;
 
-        public WordGenerator(string v1, int v2)
+        public WordGenerator(List<string> list, int v2)
         {
-            answer = v1;
+            wordList = list;
             len = v2;
         }
+
+        public void RemoveWrongLength()
+        {
+            foreach (var i in wordList)
+            {
+                if (i.Length != len)
+                {
+                    wordList.Remove(i);
+                }
+
+            }
+        }
+
     }
 
 }
