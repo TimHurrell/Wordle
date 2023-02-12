@@ -67,12 +67,15 @@ namespace GameBoard
         public List<Row> ListOfRows { get; set; } = new List<Row>();
 
 
+        //you're not using this constructor, you can get rid of it.
         public Board() { }
         public Board(string answer, int numberOfGoesAllowed)
         {
             Answer = answer;
             NumberOfGoesAllowed = numberOfGoesAllowed;
         }
+
+        //can you think of a better name than rowfromrowclass? Why not just row
         public void TakeGuess(string guess, Row rowfromrowclass)
         {
             if (Guess.Count < NumberOfGoesAllowed && !GuessCorrect)
@@ -84,11 +87,13 @@ namespace GameBoard
             { ExceededNumberOfGoes = true; }
         }
 
+        //you're already marking on the row class, no need to do it again on the board class
+        //just have a bool property on the row which says correct or not
         public void AssessGuess()
         {
             if (!GuessCorrect)
             {
-
+                //this works but what if we decide to make the game a different number of letters
                 if (ListOfRows[Guess.Count - 1].MarkedGuess[0].Value == Mark.Right
                     && ListOfRows[Guess.Count - 1].MarkedGuess[1].Value == Mark.Right
                     && ListOfRows[Guess.Count - 1].MarkedGuess[2].Value == Mark.Right
@@ -118,6 +123,8 @@ namespace GameBoard
         public List<string> wordList;
         public int len;
 
+        //whats v2?
+        //does it need to be a list, could it be some less specific
         public WordGenerator(List<string> list, int v2)
         {
             wordList = list;

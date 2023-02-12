@@ -53,8 +53,7 @@ namespace TestGameBoard
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
             //Assert.False(test);
         }
-
-
+        
         [Fact]
         public void MarkRowAllCorrectBarOneLowerCase()
         {
@@ -85,10 +84,11 @@ namespace TestGameBoard
             //Assert.True(test);
         }
 
-
+        //time to start moving these into separate classes for clarity
         [Fact]
         public void GameBoardFirstRowIncorrectSecondRowCorrect()
         {
+            //you've finished testing rows so now you can concentrate on testing the board class
             Row _row1 = new Row();
             Board _board = new Board("PILOT",5);
             string guess = "FILES";
