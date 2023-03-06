@@ -4,86 +4,15 @@ using Xunit;
 
 namespace TestGameBoard
 {
-    public class UnitTest1
+    public class BoardTest
     {
 
 
 
-        [Fact]
-        public void MarkRowAllWrong()
-        {
-            Row _row = new Row();
-            //bool test = _row.Mark("PILOT", "AHEAD");
-            _row.Mark("PILOT", "AHEAD");
-
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[0].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[1].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            //Assert.False(GuessCorrect(_row));
-        }
 
 
-        [Fact]
-        public void MarkRowRightLetterWrongAndRightPosition()
-        {
-            Row _row = new Row();
-            _row.Mark("PILOT", "TIMER");
-
-            Assert.Equal(Mark.Partial, _row.MarkedGuess[0].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-
-        }
 
 
-        [Fact]
-        public void MarkRowAllCorrectBarOne()
-        {
-            Row _row = new Row();
-            _row.Mark("FILES", "Filed");
-
-            Assert.Equal(Mark.Right, _row.MarkedGuess[0].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
-            Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            //Assert.False(test);
-        }
-
-
-        [Fact]
-        public void MarkRowAllCorrectBarOneLowerCase()
-        {
-            Row _row = new Row();
-            _row.Mark("PILOT", "PILOt");
-
-            Assert.Equal(Mark.Right, _row.MarkedGuess[0].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
-            //Assert.True(test);
-        }
-
-
-        [Fact]
-        public void MarkRowAllCorrect()
-        {
-            Row _row = new Row();
-            _row.Mark("PILOT", "PILOT");
-
-
-            Assert.Equal(Mark.Right, _row.MarkedGuess[0].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
-            Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
-            //Assert.True(test);
-        }
 
 
         [Fact]
@@ -276,43 +205,8 @@ namespace TestGameBoard
 
 
 
-        [Fact]
-        public void FiveLetterWordFromList()
-        {
-            List<string> wordList = new List<string>()
-                    {
-                        "PILOT",
-                        "PILOTS"
-                    };
-            WordGenerator _word = new WordGenerator(wordList, 5);
 
 
-
-            Assert.Equal(_word.len, _word.answer.Length);
-            Assert.Equal("PILOT", _word.answer);
-
-        }
-
-
-        [Fact]
-        public void ListContainsOnlyFiveLetterWords()
-        {
-            List<string> wordList = new List<string>()
-                    {
-                        "PILOT",
-                        "PILOTS",
-                        "PILOZ",
-                        "PILOTZ"
-                    };
-            WordGenerator _word = new WordGenerator(wordList, 5);
-            _word.RemoveWrongLength();
-
-
-
-            Assert.Equal("PILOTS", _word.wordList[0]);
-            Assert.Equal("PILOTZ", _word.wordList[1]);
-
-        }
 
     }
 
