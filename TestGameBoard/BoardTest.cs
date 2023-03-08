@@ -21,44 +21,44 @@ namespace TestGameBoard
             Row _row1 = new Row();
             Board _board = new Board("PILOT",5);
             string guess = "FILES";
-            
+            _row1.Mark(guess, _board.Answer);
 
-           _board.TakeGuess(guess, _row1);
+
+            _board.TakeGuess(guess, _row1);
 
             Assert.Single(_board.Guess);
-            _board.ListOfRows[0].Mark(_board.Answer, guess);
+            //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
-
+            /*
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[0].MarkedGuess[1].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[0].MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[4].Value);
+            */
 
-            _board.AssessGuess();
-            bool test1 = _board.GuessCorrect;
-            Assert.False(test1);
             Assert.Contains("FILES", _board.Guess[0]);
+            Assert.False(_board.GuessCorrect);
 
 
 
             Row _row2 = new Row();
-            _board.TakeGuess("PILOT", _row2);
-            _board.ListOfRows[1].Mark("PILOT", "PILOT");
+            guess = "PILOT";
+            _row2.Mark(guess, _board.Answer);
+            _board.TakeGuess(guess, _row2);
             Assert.Equal(2, _board.Guess.Count);
 
 
-
+/*
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[1].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[4].Value);
+*/
 
-            _board.AssessGuess();
-            bool test2 = _board.GuessCorrect;
-            Assert.True(test2);
-            
+            Assert.True(_board.GuessCorrect);
+
 
         }
 
@@ -73,7 +73,7 @@ namespace TestGameBoard
             _board.TakeGuess(guess, _row1);
 
             Assert.Single(_board.Guess);
-            _board.ListOfRows[0].Mark(_board.Answer, guess);
+            //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
 
@@ -95,7 +95,7 @@ namespace TestGameBoard
             _board.TakeGuess(guess, _row1);
 
             Assert.Single(_board.Guess);
-            _board.ListOfRows[0].Mark(_board.Answer, guess);
+            //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
 

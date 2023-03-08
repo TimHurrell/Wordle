@@ -15,6 +15,7 @@ namespace GameBoard
     public class Row
     {
         public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
+        public bool GuessCorrect { get; set; } = true;
 
         public void Mark(string word, string guess)
         {
@@ -34,6 +35,7 @@ namespace GameBoard
                 else if (word.Contains(UppedCharacter) && word[i] != UppedCharacter) 
                 {
                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
+                   GuessCorrect = false;
                 }
 
 
@@ -41,6 +43,7 @@ namespace GameBoard
                 else
                 {
                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Wrong));
+                   GuessCorrect = false;
                 }
 
 

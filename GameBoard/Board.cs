@@ -23,22 +23,27 @@ namespace GameBoard
             Answer = answer;
             NumberOfGoesAllowed = numberOfGoesAllowed;
         }
-        public void TakeGuess(string guess, Row rowfromrowclass)
+
+        public void TakeGuess(string guess, Row row)
         {
             if (Guess.Count < NumberOfGoesAllowed && !GuessCorrect)
             {
                 Guess.Add(guess);
-                ListOfRows.Add(rowfromrowclass);
+                ListOfRows.Add(row);
+                GuessCorrect = row.GuessCorrect;
             }
             else
             { ExceededNumberOfGoes = true; }
         }
 
-        public void AssessGuess()
+        //you're already marking on the row class, no need to do it again on the board class
+        //just have a bool property on the row which says correct or not
+        /* 
+         * public void AssessGuess()
         {
             if (!GuessCorrect)
             {
-
+                //this works but what if we decide to make the game a different number of letters
                 if (ListOfRows[Guess.Count - 1].MarkedGuess[0].Value == Mark.Right
                     && ListOfRows[Guess.Count - 1].MarkedGuess[1].Value == Mark.Right
                     && ListOfRows[Guess.Count - 1].MarkedGuess[2].Value == Mark.Right
@@ -54,6 +59,7 @@ namespace GameBoard
 
             }
         }
+        */
 
         public bool SameAsPreviousGo(string guess)
         {

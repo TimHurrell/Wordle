@@ -51,7 +51,7 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            //Assert.False(test);
+            Assert.False(_row.GuessCorrect);
         }
 
 
@@ -66,6 +66,7 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
+            Assert.True(_row.GuessCorrect);
             //Assert.True(test);
         }
 
@@ -82,6 +83,7 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
+            Assert.True(_row.GuessCorrect);
             //Assert.True(test);
         }
 
