@@ -21,7 +21,8 @@ namespace TestGameBoard
                         "PILOT",
                         "PILOTS"
                     };
-            GameBoard.WordGenerator _word = new GameBoard.WordGenerator(wordList, 5);
+            WordGenerator _word = new WordGenerator(wordList, 5);
+            _word.RemoveWrongLength();
 
 
 
@@ -41,7 +42,7 @@ namespace TestGameBoard
                         "PILOZ",
                         "PILOTZ"
                     };
-            GameBoard.WordGenerator _word = new GameBoard.WordGenerator(wordList, 5);
+            WordGenerator _word = new WordGenerator(wordList, 5);
             _word.RemoveWrongLength();
 
 

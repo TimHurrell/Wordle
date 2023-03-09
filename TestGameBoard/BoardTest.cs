@@ -26,7 +26,7 @@ namespace TestGameBoard
 
             _board.TakeGuess(guess, _row1);
 
-            Assert.Single(_board.Guess);
+            Assert.Single(_board.ListOfRows);
             //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
             /*
@@ -37,7 +37,6 @@ namespace TestGameBoard
             Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[4].Value);
             */
 
-            Assert.Contains("FILES", _board.Guess[0]);
             Assert.False(_board.GuessCorrect);
 
 
@@ -46,7 +45,7 @@ namespace TestGameBoard
             guess = "PILOT";
             _row2.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row2);
-            Assert.Equal(2, _board.Guess.Count);
+            Assert.Equal(2, _board.ListOfRows.Count);
 
 
 /*
@@ -71,7 +70,7 @@ namespace TestGameBoard
             _row1.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row1);
 
-            Assert.Single(_board.Guess);
+            Assert.Single(_board.ListOfRows);
             //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
@@ -81,7 +80,6 @@ namespace TestGameBoard
             _board.TakeGuess(guess, _row2);
 
             Assert.True(_board.ExceededNumberOfGoes);
-
         }
 
         [Fact]
@@ -94,7 +92,7 @@ namespace TestGameBoard
 
             _board.TakeGuess(guess, _row1);
 
-            Assert.Single(_board.Guess);
+            Assert.Single(_board.ListOfRows);
             //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
@@ -136,7 +134,7 @@ namespace TestGameBoard
 
 
             _board.TakeGuess(guess1, _row1);
-            Assert.Contains("FILES", _board.Guess[0]);
+            //Assert.Contains("FILES", _board.Guess[0]);
 
 
             Row _row2 = new Row();

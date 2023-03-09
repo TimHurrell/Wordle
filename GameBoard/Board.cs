@@ -28,7 +28,7 @@ namespace GameBoard
         {
             if (!GuessCorrect)
             {
-                if (Guess.Count < NumberOfGoesAllowed)
+                if (ListOfRows.Count < NumberOfGoesAllowed)
                 {
                     Guess.Add(guess);
                     ListOfRows.Add(row);
