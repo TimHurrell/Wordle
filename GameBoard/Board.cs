@@ -26,14 +26,17 @@ namespace GameBoard
 
         public void TakeGuess(string guess, Row row)
         {
-            if (Guess.Count < NumberOfGoesAllowed && !GuessCorrect)
+            if (!GuessCorrect)
             {
-                Guess.Add(guess);
-                ListOfRows.Add(row);
-                GuessCorrect = row.GuessCorrect;
+                if (Guess.Count < NumberOfGoesAllowed)
+                {
+                    Guess.Add(guess);
+                    ListOfRows.Add(row);
+                    GuessCorrect = row.GuessCorrect;
+                }
+                else
+                { ExceededNumberOfGoes = true; }
             }
-            else
-            { ExceededNumberOfGoes = true; }
         }
 
         //you're already marking on the row class, no need to do it again on the board class

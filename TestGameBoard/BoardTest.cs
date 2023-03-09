@@ -68,17 +68,17 @@ namespace TestGameBoard
             Row _row1 = new Row();
             Board _board = new Board("PILOT",1);
             string guess = "FILES";
-
-
+            _row1.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row1);
 
             Assert.Single(_board.Guess);
             //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
-
             Row _row2 = new Row();
-            _board.TakeGuess("PILOT", _row2);
+            guess = "PILOT";
+            _row2.Mark(guess, _board.Answer);
+            _board.TakeGuess(guess, _row2);
 
             Assert.True(_board.ExceededNumberOfGoes);
 
@@ -180,23 +180,25 @@ namespace TestGameBoard
             Row _row1 = new Row();
             Board _board = new Board("PILOT", 2);
             string guess = "FILES";
-
-
-
+            _row1.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row1);
 
 
 
             Row _row2 = new Row();
             guess = "PILET";
+            _row2.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row2);
 
             Row _row3 = new Row();
             guess = "PILEE";
+            _row3.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row3);
 
             Row _row4 = new Row();
             guess = "PILET";
+            _row4.Mark(guess, _board.Answer);
+            _board.TakeGuess(guess, _row4);
 
 
             Assert.True(_board.SameAsPreviousGo(guess));
