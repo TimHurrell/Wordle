@@ -20,14 +20,19 @@ namespace GameBoard
 
         public void RemoveWrongLength()
         {
+            var toRemove = new List<string>();
+
+
             foreach (var i in wordList)
             {
                 if (i.Length != lengthOfWordAllowed)
                 {
-                    wordList.Remove(i);
+                    toRemove.Add(i);
                 }
 
             }
+            wordList = wordList.Except(toRemove).ToList();
+
         }
     }
 }

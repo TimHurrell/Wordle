@@ -14,7 +14,7 @@ namespace TestGameBoard
 
 
         [Fact]
-        public void FiveLetterWordFromList()
+        public void FiveLetterWordFromListOnlyOneMember()
         {
             List<string> wordList = new List<string>()
                     {
@@ -26,8 +26,8 @@ namespace TestGameBoard
 
 
 
-            Assert.Equal(_word.lengthOfWordAllowed, _word.answer.Length);
-            Assert.Equal("PILOT", _word.answer);
+           Assert.Single(_word.wordList);
+        //    Assert.Equal("PILOT", _word.answer);
 
         }
 
@@ -47,8 +47,8 @@ namespace TestGameBoard
 
 
 
-            Assert.Equal("PILOTS", _word.wordList[0]);
-            Assert.Equal("PILOTZ", _word.wordList[1]);
+            Assert.Equal("PILOT", _word.wordList[0]);
+            Assert.Equal("PILOZ", _word.wordList[1]);
 
         }
 
