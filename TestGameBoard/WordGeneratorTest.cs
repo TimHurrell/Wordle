@@ -21,13 +21,13 @@ namespace TestGameBoard
                         "PILOT",
                         "PILOTS"
                     };
-            WordGenerator _word = new WordGenerator(wordList, 5);
+            WordListGenerator _word = new WordListGenerator(wordList, 5);
             _word.RemoveWrongLength();
 
 
 
            Assert.Single(_word.wordList);
-        //    Assert.Equal("PILOT", _word.answer);
+       
 
         }
 
@@ -42,13 +42,15 @@ namespace TestGameBoard
                         "PILOZ",
                         "PILOTZ"
                     };
-            WordGenerator _word = new WordGenerator(wordList, 5);
+            WordListGenerator _word = new WordListGenerator(wordList, 5);
             _word.RemoveWrongLength();
 
 
 
             Assert.Equal("PILOT", _word.wordList[0]);
             Assert.Equal("PILOZ", _word.wordList[1]);
+
+            Assert.Equal(2, _word.wordList.Count);
 
         }
 

@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace GameBoard
 {
-    public class WordGenerator
+    public class WordListGenerator
     {
         public string answer;
         public List<string> wordList;
         public int lengthOfWordAllowed;
 
         //does it need to be a list, could it be some less specific
-        public WordGenerator(List<string> list, int permittedLengthOfWord)
+        public WordListGenerator(List<string> list, int permittedLengthOfWord)
         {
             wordList = list;
             lengthOfWordAllowed = permittedLengthOfWord;
