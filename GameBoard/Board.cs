@@ -63,11 +63,5 @@ namespace GameBoard
             }
         }
         */
-
-        public bool SameAsPreviousGo(string guess)
-        {
-            return Guess.Any(s => s == guess);
-
-        }
     }
 }
