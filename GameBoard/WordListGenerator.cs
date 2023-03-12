@@ -34,5 +34,37 @@ namespace GameBoard
             wordList = wordList.Except(toRemove).ToList();
 
         }
+
+        public string SelectAnswer()
+        {
+             {
+                if (wordList.Count == 0)
+                {
+                    throw new Exception("No words available");
+                }
+
+                // Select a random index
+                var random = new Random();
+                var index = random.Next(0, wordList.Count);
+
+                // Get the word at the selected index
+                var answer = wordList[index];
+
+                return answer;
+            }
+
+        }
+
+        public bool GuessExistsInWordList(string guess)
+        {
+            return wordList.Contains(guess);
+        }
+
+
+        public void RemoveGuessFromWordList(string guess)
+        {
+            wordList.Remove(guess);
+
+        }
     }
 }
