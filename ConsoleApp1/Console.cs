@@ -30,6 +30,8 @@ namespace ConsoleApp
                     System.Console.Write("Enter guess :\n ");
                     string guess = System.Console.ReadLine();
                     game.Mark(newBoard.Answer, guess);
+
+                    ///
                     
                     System.Console.Write("1st letter is :\n " + game.MarkedGuess[0].Value + "\n");
                     System.Console.Write("2nd letter is :\n " + game.MarkedGuess[1].Value + "\n");
