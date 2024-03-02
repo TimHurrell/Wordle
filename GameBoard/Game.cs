@@ -23,16 +23,17 @@ namespace GameBoard
             MarkedGuess.Clear();
             for (int i = 0; i < guess.Length; i++)
             {
-                char UppedCharacter = char.ToUpper(guess[i]);
+                char UppedCharacterG = char.ToUpper(guess[i]);
+                char UppedCharacterA = char.ToUpper(word[i]);
 
 
 
-                if (UppedCharacter == word[i])
+                if (UppedCharacterG == UppedCharacterA)
                 {
                     MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Right));
                 }
 
-                else if (word.Contains(UppedCharacter) && word[i] != UppedCharacter) 
+                else if (word.Contains(UppedCharacterG) && UppedCharacterA != UppedCharacterG) 
                 {
                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
                    GuessCorrect = false;

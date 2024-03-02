@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBoard", "GameBoard\GameBoard.csproj", "{2BAE63EC-9C98-41B3-8B16-71A7B5547B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameBoard", "GameBoard\GameBoard.csproj", "{2BAE63EC-9C98-41B3-8B16-71A7B5547B20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGameBoard", "TestGameBoard\TestGameBoard.csproj", "{FF4AA6EE-E03A-4363-B1AD-235F356A8A10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestGameBoard", "TestGameBoard\TestGameBoard.csproj", "{FF4AA6EE-E03A-4363-B1AD-235F356A8A10}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{2C42403B-1873-425B-BDBA-B2C1BECE8627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestProject", "ConsoleTestProject\ConsoleTestProject.csproj", "{F58D282A-1B4A-4856-8173-D20FB27BBC46}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2C42403B-1873-425B-BDBA-B2C1BECE8627} = {2C42403B-1873-425B-BDBA-B2C1BECE8627}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +28,14 @@ Global
 		{FF4AA6EE-E03A-4363-B1AD-235F356A8A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF4AA6EE-E03A-4363-B1AD-235F356A8A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF4AA6EE-E03A-4363-B1AD-235F356A8A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C42403B-1873-425B-BDBA-B2C1BECE8627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C42403B-1873-425B-BDBA-B2C1BECE8627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C42403B-1873-425B-BDBA-B2C1BECE8627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C42403B-1873-425B-BDBA-B2C1BECE8627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F58D282A-1B4A-4856-8173-D20FB27BBC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F58D282A-1B4A-4856-8173-D20FB27BBC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F58D282A-1B4A-4856-8173-D20FB27BBC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F58D282A-1B4A-4856-8173-D20FB27BBC46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
