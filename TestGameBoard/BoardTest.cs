@@ -27,16 +27,7 @@ namespace TestGameBoard
             _board.TakeGuess(guess, _row1);
 
             Assert.Single(_board.ListOfRows);
-            //_board.ListOfRows[0].Mark(_board.Answer, guess);
-
-            /*
-            Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[0].Value);
-            Assert.Equal(Mark.Right, _board.ListOfRows[0].MarkedGuess[1].Value);
-            Assert.Equal(Mark.Right, _board.ListOfRows[0].MarkedGuess[2].Value);
-            Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[3].Value);
-            Assert.Equal(Mark.Wrong, _board.ListOfRows[0].MarkedGuess[4].Value);
-            */
-
+            
             Assert.False(_board.GuessCorrect);
 
 
@@ -47,14 +38,6 @@ namespace TestGameBoard
             _board.TakeGuess(guess, _row2);
             Assert.Equal(2, _board.ListOfRows.Count);
 
-
-/*
-            Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[0].Value);
-            Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[1].Value);
-            Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[2].Value);
-            Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[3].Value);
-            Assert.Equal(Mark.Right, _board.ListOfRows[1].MarkedGuess[4].Value);
-*/
 
             Assert.True(_board.GuessCorrect);
 
@@ -75,7 +58,7 @@ namespace TestGameBoard
 
 
             Row _row2 = new Row();
-            guess = "PILOT";
+            guess = "LEAVE";
             _row2.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row2);
 
@@ -86,8 +69,9 @@ namespace TestGameBoard
         public void OnlyAllowedTwoGoesOK()
         {
             Row _row1 = new Row();
-            Board _board = new Board("PILOT", 2);
+            Board _board = new Board("GREAT", 2);
             string guess = "FILES";
+            _row1.Mark(guess, _board.Answer);
 
 
             _board.TakeGuess(guess, _row1);
@@ -98,9 +82,21 @@ namespace TestGameBoard
 
 
             Row _row2 = new Row();
-            _board.TakeGuess("PILOT", _row2);
+            guess = "PILOT";
+            _row2.Mark(guess, _board.Answer);
+            _board.TakeGuess(guess, _row2);
 
             Assert.False(_board.ExceededNumberOfGoes);
+
+
+
+            Row _row3 = new Row();
+            guess = "LEAVE";
+            _row3.Mark(guess, _board.Answer);
+            _board.TakeGuess(guess, _row3);
+
+            Assert.True(_board.ExceededNumberOfGoes);
+
 
         }
 
