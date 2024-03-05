@@ -54,7 +54,6 @@ namespace TestGameBoard
             _board.TakeGuess(guess, _row1);
 
             Assert.Single(_board.ListOfRows);
-            //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
             Row _row2 = new Row();
@@ -62,7 +61,7 @@ namespace TestGameBoard
             _row2.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row2);
 
-            Assert.True(_board.ExceededNumberOfGoes);
+            Assert.True(_board.TargetNumberOfGoes);
         }
 
         [Fact]
@@ -86,7 +85,7 @@ namespace TestGameBoard
             _row2.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row2);
 
-            Assert.False(_board.ExceededNumberOfGoes);
+            Assert.True(_board.TargetNumberOfGoes);
 
 
 
@@ -95,12 +94,39 @@ namespace TestGameBoard
             _row3.Mark(guess, _board.Answer);
             _board.TakeGuess(guess, _row3);
 
-            Assert.True(_board.ExceededNumberOfGoes);
+            Assert.True(_board.TargetNumberOfGoes);
 
 
         }
 
- 
+        [Fact]
+        public void ReachedTwoGoesOK()
+        {
+            Row _row1 = new Row();
+            Board _board = new Board("GREAT", 2);
+            string guess = "FILES";
+            _row1.Mark(guess, _board.Answer);
+
+
+            _board.TakeGuess(guess, _row1);
+
+            Assert.False(_board.TargetNumberOfGoes);
+            //_board.ListOfRows[0].Mark(_board.Answer, guess);
+
+
+
+            Row _row2 = new Row();
+            guess = "PILOT";
+            _row2.Mark(guess, _board.Answer);
+            _board.TakeGuess(guess, _row2);
+
+            Assert.True(_board.TargetNumberOfGoes);
+
+
+
+        }
+
+
 
 
 

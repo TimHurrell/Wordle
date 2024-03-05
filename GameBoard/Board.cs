@@ -8,7 +8,6 @@ namespace GameBoard
 
     public class Board
     {
-        public bool ExceededNumberOfGoes { get; set; } = false;
 
         public int NumberOfGoesAllowed;
 
@@ -16,7 +15,7 @@ namespace GameBoard
         public List<string> Guess { get; set; } = new List<string>();
         public bool GuessCorrect { get; set; } = false;
         public List<Row> ListOfRows { get; set; } = new List<Row>();
-
+        public bool TargetNumberOfGoes { get; set; } = false;
 
         public Board(string answer, int numberOfGoesAllowed)
         {
@@ -28,16 +27,16 @@ namespace GameBoard
         {
             if (!GuessCorrect)
             {
-                if (ListOfRows.Count < NumberOfGoesAllowed)
+                if (!TargetNumberOfGoes)
                 {
                     Guess.Add(guess);
                     ListOfRows.Add(row);
                     GuessCorrect = row.GuessCorrect;
+                    TargetNumberOfGoes = ListOfRows.Count == NumberOfGoesAllowed;
                 }
-                else
-                { ExceededNumberOfGoes = true; }
             }
         }
+
 
         //you're already marking on the row class, no need to do it again on the board class
         //just have a bool property on the row which says correct or not

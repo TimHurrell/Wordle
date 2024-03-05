@@ -23,7 +23,7 @@ namespace ConsoleApp
                 wordListForGameBoard.RemoveWrongLength(); // remove any words that contain a number of letters other than the line above
                 string answer = wordListForGameBoard.SelectAnswer(); // select an answer from the remaining words in the list
                 Board newBoard = new Board(answer, 2); // create a game board which contains the answer and the number of attempts permitted
-                while (newBoard.ExceededNumberOfGoes == false && newBoard.GuessCorrect == false )
+                while (newBoard.TargetNumberOfGoes == false && newBoard.GuessCorrect == false )
                 {
                     System.Console.Write("Answer is :\n " + newBoard.Answer + "\n");
                     Row game = new Row();
@@ -35,7 +35,7 @@ namespace ConsoleApp
 
                     newBoard.TakeGuess(guess, game);
                     
-                    System.Console.Write("\n \n \n You have " + newBoard.ListOfRows.Count + "goes left \n \n \n");
+                    System.Console.Write("\n \n \n You have " + (newBoard.NumberOfGoesAllowed - newBoard.ListOfRows.Count) + " goes left \n \n \n");
 
 
                 }
