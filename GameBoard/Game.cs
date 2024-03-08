@@ -25,6 +25,7 @@ namespace GameBoard
             {
                 char UppedCharacterG = char.ToUpper(guess[i]);
                 char UppedCharacterA = char.ToUpper(word[i]);
+                word = word.ToUpper();
 
 
 
