@@ -3,19 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public enum Mark
-{
-    Wrong,
-    Partial,
-    Right
-}
 
 namespace GameBoard
 {
     public class Row
     {
-        public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
+        public IList<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
         public bool GuessCorrect { get; set; } = true;
+
+        public bool GuessIsCorrect()
+        {
+            for (int i = 0; i < MarkedGuess.Count; i++)
+            {
+                if (MarkedGuess[i].Value != global::Mark.Right )
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         public void Mark(string word, string guess)
         {
