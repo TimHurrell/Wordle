@@ -9,19 +9,14 @@ namespace GameBoard
     public class Row
     {
         public IList<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
-        public bool GuessCorrect { get; set; } = true;
-
-        public bool GuessIsCorrect()
+        // public bool GuessCorrect { get; set; } = true;
+        public bool GuessCorrect
         {
-            for (int i = 0; i < MarkedGuess.Count; i++)
-            {
-                if (MarkedGuess[i].Value != global::Mark.Right )
-                {
-                    return false;
-                }
-            }
-            return true;
+            get => MarkedGuess.All(pair => pair.Value == global::Mark.Right); private set { }
         }
+        
+
+        //public bool GuessCorrect => MarkedGuess.All(pair => pair.Value == Mark.Right);
 
         public void Mark(string word, string guess)
         {
@@ -43,7 +38,7 @@ namespace GameBoard
                 else if (word.Contains(UppedCharacterG) && UppedCharacterA != UppedCharacterG) 
                 {
                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
-                   GuessCorrect = false;
+                  // GuessCorrect = false;
                 }
 
 
@@ -51,7 +46,7 @@ namespace GameBoard
                 else
                 {
                    MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Wrong));
-                   GuessCorrect = false;
+                   // GuessCorrect = false;
                 }
 
 

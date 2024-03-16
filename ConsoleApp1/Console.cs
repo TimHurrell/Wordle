@@ -14,14 +14,15 @@ namespace ConsoleApp
             string continueGame = "y";
             while (continueGame == "y")
             {
-               
-                WordFilePath wordsfilepathinstance = new WordFilePath(); 
-                CreateWordListFromFile createwordlistfromfileinstance = new CreateWordListFromFile(); 
+                // creating list of words from the word text file
+
+                WordFilePath wordsfilepathinstance = new WordFilePath(); // create string to read the source file
+                CreateWordListFromFile createwordlistfromfileinstance = new CreateWordListFromFile(); // create instance of word list
                 List<string> wordlistinstance = createwordlistfromfileinstance.CreateWordList(wordsfilepathinstance.GetWordFilePath()); // populate word list with file
-                WordListGenerator wordListForGameBoard = new WordListGenerator(wordlistinstance, 5); 
-                wordListForGameBoard.RemoveWrongLength(); 
-                string answer = wordListForGameBoard.SelectAnswer(); 
-                Board newBoard = new Board(answer, 5); 
+                WordListGenerator wordListForGameBoard = new WordListGenerator(wordlistinstance, 5); // Create another list with this list of words (why?)
+                wordListForGameBoard.RemoveWrongLength(); // remove any words that contain a number of letters other than the line above
+                string answer = wordListForGameBoard.SelectAnswer(); // select an answer from the remaining words in the list
+                Board newBoard = new Board(answer, 5); // create a game board which contains the answer and the number of attempts permitted
                 while (newBoard.TargetNumberOfGoes == false && newBoard.GuessCorrect == false )
                 {
                     Row game = new Row();
@@ -71,20 +72,17 @@ namespace ConsoleApp
 
 
 3) public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; }
-the set can be made private as you will not be modifying this externally. This improves encapsulation
+the set can be made private as you will not be modifying this externally. This improves encapsulation DONE
 
-PROBLEM : my <object>.MarkedGuess[n].values are inaccessible when setting to private.
-
-
-
-4) Change List<KeyValuePair<char, Mark>> to IList<KeyValuePair<char, Mark>> in order to make the reference as general as possible. This is good practive and makes your code more flexible.
+4) Change List<KeyValuePair<char, Mark>> to IList<KeyValuePair<char, Mark>> in order to make the reference as general as possible.
+This is good practive and makes your code more flexible. DONE
 
 
 
-public bool GuessCorrect { get; set; } = true;
+5) public bool GuessCorrect { get; set; } = true;
 Not ideal to default to true. If there is a bug somewhere in your code then its going to fail so that the guess is correct.
 Again the setter is public. It should be private for better encapsulation.
-Also GuessCorrect could actually be calculated rather than a set property which would be neater.
+Also GuessCorrect could actually be calculated rather than a set property which would be neater. Done
 
 
 
