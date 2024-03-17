@@ -9,14 +9,12 @@ namespace GameBoard
     public class Row
     {
         public IList<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
-        // public bool GuessCorrect { get; set; } = true;
         public bool GuessCorrect
         {
             get => MarkedGuess.All(pair => pair.Value == global::Mark.Right); private set { }
         }
         
 
-        //public bool GuessCorrect => MarkedGuess.All(pair => pair.Value == Mark.Right);
 
         public void Mark(string word, string guess)
         {

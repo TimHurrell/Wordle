@@ -12,12 +12,16 @@ namespace GameBoard
         public int NumberOfGoesAllowed;
 
         public string Answer { get; set; }
-        public List<string> Guess { get; set; } = new List<string>();
+        public IList<string> Guess { get; set; } = new List<string>();
         public bool GuessCorrect { get; set; } = false;
-        public List<Row> ListOfRows { get; set; } = new List<Row>();
-        public bool TargetNumberOfGoes { get; set; } = false;
+        public IList<Row> ListOfRows { get; set; } = new List<Row>();
+        public bool TargetNumberOfGoes
+        {
+            get => ListOfRows.Count == NumberOfGoesAllowed; private set { }
+        }
 
-        public Board(string answer, int numberOfGoesAllowed)
+
+    public Board(string answer, int numberOfGoesAllowed)
         {
             Answer = answer;
             NumberOfGoesAllowed = numberOfGoesAllowed;
@@ -32,35 +36,9 @@ namespace GameBoard
                     Guess.Add(guess);
                     ListOfRows.Add(row);
                     GuessCorrect = row.GuessCorrect;
-                    TargetNumberOfGoes = ListOfRows.Count == NumberOfGoesAllowed;
                 }
             }
         }
 
-
-        //you're already marking on the row class, no need to do it again on the board class
-        //just have a bool property on the row which says correct or not
-        /* 
-         * public void AssessGuess()
-        {
-            if (!GuessCorrect)
-            {
-                //this works but what if we decide to make the game a different number of letters
-                if (ListOfRows[Guess.Count - 1].MarkedGuess[0].Value == Mark.Right
-                    && ListOfRows[Guess.Count - 1].MarkedGuess[1].Value == Mark.Right
-                    && ListOfRows[Guess.Count - 1].MarkedGuess[2].Value == Mark.Right
-                    && ListOfRows[Guess.Count - 1].MarkedGuess[3].Value == Mark.Right
-                    && ListOfRows[Guess.Count - 1].MarkedGuess[4].Value == Mark.Right
-                    )
-                {
-                    GuessCorrect = true;
-                }
-
-
-
-
-            }
-        }
-        */
     }
 }

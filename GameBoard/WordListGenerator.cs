@@ -8,11 +8,10 @@ namespace GameBoard
     public class WordListGenerator
     {
         public string answer;
-        public List<string> wordList;
+        public IList<string> wordList;
         public int lengthOfWordAllowed;
 
-        //does it need to be a list, could it be some less specific
-        public WordListGenerator(List<string> list, int permittedLengthOfWord)
+        public WordListGenerator(IList<string> list, int permittedLengthOfWord)
         {
             wordList = list;
             lengthOfWordAllowed = permittedLengthOfWord;
