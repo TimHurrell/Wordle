@@ -22,12 +22,7 @@ namespace TestGameBoard
                         "PILOTS"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
-            _word.RemoveWrongLength();
-
-
-
-           Assert.Single(_word.wordList);
-       
+            Assert.Single(_word.wordList);     
 
         }
 
@@ -43,13 +38,9 @@ namespace TestGameBoard
                         "PILOTZ"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
-            _word.RemoveWrongLength();
-
-
 
             Assert.Equal("PILOT", _word.wordList[0]);
             Assert.Equal("PILOZ", _word.wordList[1]);
-
             Assert.Equal(2, _word.wordList.Count);
 
         }
@@ -66,11 +57,11 @@ namespace TestGameBoard
                         "LAPEL"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
-            string answer = _word.SelectAnswer();
+            //string answer = _word.SelectAnswer();
 
 
 
-            Assert.Contains(wordList, w => answer.Contains(w));
+            Assert.Contains(wordList, w => _word.answer.Contains(w));
 
         }
 

@@ -13,16 +13,10 @@ namespace GameBoard
 
         public WordListGenerator(IList<string> list, int permittedLengthOfWord)
         {
-            wordList = list;
             lengthOfWordAllowed = permittedLengthOfWord;
-        }
 
-        public void RemoveWrongLength()
-        {
             var toRemove = new List<string>();
-
-
-            foreach (var i in wordList)
+            foreach (var i in list)
             {
                 if (i.Length != lengthOfWordAllowed)
                 {
@@ -30,27 +24,20 @@ namespace GameBoard
                 }
 
             }
-            wordList = wordList.Except(toRemove).ToList();
+            wordList = list.Except(toRemove).ToList();
 
-        }
-
-        public string SelectAnswer()
-        {
-             {
-                if (wordList.Count == 0)
-                {
-                    throw new Exception("No words available");
-                }
-
-                // Select a random index
-                var random = new Random();
-                var index = random.Next(0, wordList.Count);
-
-                // Get the word at the selected index
-                var answer = wordList[index];
-
-                return answer;
+            if (wordList.Count == 0)
+            {
+                throw new Exception("No words available");
             }
+
+            // Select a random index
+            var random = new Random();
+            var index = random.Next(0, wordList.Count);
+
+            // Get the word at the selected index
+            answer = wordList[index];
+
 
         }
 

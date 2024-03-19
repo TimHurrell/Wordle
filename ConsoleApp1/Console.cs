@@ -16,18 +16,18 @@ namespace ConsoleApp
             {
                 // creating list of words from the word text file
 
-                WordFilePath wordsfilepathinstance = new WordFilePath(); // create string to read the source file
-                CreateWordListFromFile createwordlistfromfileinstance = new CreateWordListFromFile(); // create instance of word list
-                List<string> wordlistinstance = createwordlistfromfileinstance.CreateWordList(wordsfilepathinstance.GetWordFilePath()); // populate word list with file
+                WordFilePath wordsfilepathinstance = new WordFilePath();
+                CreateWordListFromFile createwordlistfromfileinstance = new CreateWordListFromFile(); 
+                List<string> wordlistinstance = createwordlistfromfileinstance.CreateWordList(wordsfilepathinstance.GetWordFilePath()); 
                 WordListGenerator wordListForGameBoard = new WordListGenerator(wordlistinstance, 5); // Create another list with this list of words (why?)
-                wordListForGameBoard.RemoveWrongLength(); // remove any words that contain a number of letters other than the line above
-                string answer = wordListForGameBoard.SelectAnswer(); // select an answer from the remaining words in the list
-                Board newBoard = new Board(answer, 5); // create a game board which contains the answer and the number of attempts permitted
+                Board newBoard = new Board(wordListForGameBoard.answer, 5); // create a game board which contains the answer and the number of attempts permitted
                 while (newBoard.TargetNumberOfGoes == false && newBoard.GuessCorrect == false )
                 {
                     Row _row = new Row();
                     System.Console.Write("Enter guess :\n \n");
                     string guess = System.Console.ReadLine();
+
+
                     _row.Mark(newBoard.Answer, guess);
 
                     if (!wordListForGameBoard.GuessExistsInWordList(guess))
@@ -53,7 +53,7 @@ namespace ConsoleApp
                 }
 
 
-                System.Console.Write("The correct word was ....." + answer + "... :\n ");
+                System.Console.Write("The correct word was ....." + wordListForGameBoard.answer + "... :\n ");
                 System.Console.Write("Do you wish to continue? :\n ");
                 continueGame = System.Console.ReadLine();
             }
