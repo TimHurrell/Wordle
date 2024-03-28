@@ -13,7 +13,7 @@ namespace GameBoard
 
         public string Answer { get; set; }
         public IList<string> Guess { get; set; } = new List<string>();
-        public bool GuessCorrect { get; set; } = false;
+        //public bool GuessCorrect { get; set; } = false;
         public IList<Row> ListOfRows { get; set; } = new List<Row>();
         public bool TargetNumberOfGoes
         {
@@ -27,15 +27,23 @@ namespace GameBoard
             NumberOfGoesAllowed = numberOfGoesAllowed;
         }
 
+    public bool IsWon()
+        {
+            var lastRow = ListOfRows.LastOrDefault();
+
+            return lastRow != null ? lastRow.GuessCorrect() : false;
+
+        }
+
+
         public void TakeGuess(string guess, Row row)
         {
-            if (!GuessCorrect)
+            if (!IsWon())
             {
                 if (!TargetNumberOfGoes)
                 {
                     Guess.Add(guess);
                     ListOfRows.Add(row);
-                    GuessCorrect = row.GuessCorrect;
                 }
             }
         }

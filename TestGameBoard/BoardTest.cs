@@ -28,7 +28,7 @@ namespace TestGameBoard
 
             Assert.Single(_board.ListOfRows);
             
-            Assert.False(_board.GuessCorrect);
+            Assert.False(_board.IsWon());
 
 
 
@@ -39,7 +39,7 @@ namespace TestGameBoard
             Assert.Equal(2, _board.ListOfRows.Count);
 
 
-            Assert.True(_board.GuessCorrect);
+            Assert.True(_board.IsWon());
 
 
         }

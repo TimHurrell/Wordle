@@ -21,7 +21,7 @@ namespace ConsoleApp
                 List<string> wordlistinstance = createwordlistfromfileinstance.CreateWordList(wordsfilepathinstance.GetWordFilePath()); 
                 WordListGenerator wordListForGameBoard = new WordListGenerator(wordlistinstance, 5); // Create another list with this list of words (why?)
                 Board newBoard = new Board(wordListForGameBoard.answer, 5); // create a game board which contains the answer and the number of attempts permitted
-                while (newBoard.TargetNumberOfGoes == false && newBoard.GuessCorrect == false )
+                while (newBoard.TargetNumberOfGoes == false && newBoard.IsWon() == false )
                 {
                     Row _row = new Row();
                     System.Console.Write("Enter guess :\n \n");

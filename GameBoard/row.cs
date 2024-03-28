@@ -9,11 +9,12 @@ namespace GameBoard
     public class Row
     {
         public IList<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
-        public bool GuessCorrect
+        
+        /*public bool GuessCorrect
         {
             get => MarkedGuess.All(pair => pair.Value == global::Mark.Right); private set { }
         }
-        
+        */
 
 
         public void Mark(string word, string guess)
@@ -49,7 +50,14 @@ namespace GameBoard
 
 
             }
-          
+
+
+        }
+
+        public bool GuessCorrect()
+        {
+            return MarkedGuess.All(pair => pair.Value == global::Mark.Right);
+
         }
 
 
