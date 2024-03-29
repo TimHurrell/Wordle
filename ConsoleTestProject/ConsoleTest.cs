@@ -20,7 +20,7 @@ namespace ConsoleTestProject
         public void CheckWordListConstructor()
         {
             WordListGenerator wordlistinstance = new WordListGenerator(_listofwordsfromwordfile, 4);
-            Assert.Equal("AT&T", wordlistinstance.wordList[12]);
+            Assert.Equal("abut", wordlistinstance.wordList[12]);
         }
     
       

@@ -18,7 +18,7 @@ namespace GameBoard
             var toRemove = new List<string>();
             foreach (var i in list)
             {
-                if (i.Length != lengthOfWordAllowed)
+                if (i.Length != lengthOfWordAllowed || char.IsUpper(i[0]))
                 {
                     toRemove.Add(i);
                 }

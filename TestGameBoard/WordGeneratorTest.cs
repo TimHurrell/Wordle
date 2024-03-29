@@ -18,7 +18,7 @@ namespace TestGameBoard
         {
             List<string> wordList = new List<string>()
                     {
-                        "PILOT",
+                        "pilot",
                         "PILOTS"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
@@ -32,15 +32,33 @@ namespace TestGameBoard
         {
             List<string> wordList = new List<string>()
                     {
-                        "PILOT",
+                        "pilot",
                         "PILOTS",
-                        "PILOZ",
+                        "piloz",
                         "PILOTZ"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
 
-            Assert.Equal("PILOT", _word.wordList[0]);
-            Assert.Equal("PILOZ", _word.wordList[1]);
+            Assert.Equal("pilot", _word.wordList[0]);
+            Assert.Equal("piloz", _word.wordList[1]);
+            Assert.Equal(2, _word.wordList.Count);
+
+        }
+
+        [Fact]
+        public void ListExcludesProperNouns()
+        {
+            List<string> wordList = new List<string>()
+                    {
+                        "Jimmy",
+                        "Roger",
+                        "pilot",
+                        "learn"
+                    };
+            WordListGenerator _word = new WordListGenerator(wordList, 5);
+
+            Assert.Equal("pilot", _word.wordList[0]);
+            Assert.Equal("learn", _word.wordList[1]);
             Assert.Equal(2, _word.wordList.Count);
 
         }
@@ -51,16 +69,12 @@ namespace TestGameBoard
         {
             List<string> wordList = new List<string>()
                     {
-                        "PILOT",
-                        "SPILL",
-                        "TRIMS",
-                        "LAPEL"
+                        "pilot",
+                        "spill",
+                        "trims",
+                        "lapel"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
-            //string answer = _word.SelectAnswer();
-
-
-
             Assert.Contains(wordList, w => _word.answer.Contains(w));
 
         }
@@ -70,15 +84,15 @@ namespace TestGameBoard
         {
             List<string> wordList = new List<string>()
                     {
-                        "PILOT",
-                        "SPILL",
-                        "TRIMS",
-                        "LAPEL"
+                        "pilot",
+                        "spill",
+                        "trims",
+                        "lapel"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
-            string guess = "PILOT";
+            string guess = "pilot";
             Assert.True(_word.GuessExistsInWordList(guess));
-            guess = "PILOS";
+            guess = "pilos";
             Assert.False(_word.GuessExistsInWordList(guess));
 
         }
@@ -87,18 +101,18 @@ namespace TestGameBoard
         {
             List<string> wordList = new List<string>()
                     {
-                        "PILOT",
-                        "SPILL",
-                        "TRIMS",
-                        "LAPEL"
+                        "pilot",
+                        "spill",
+                        "trims",
+                        "lapel"
                     };
             WordListGenerator _word = new WordListGenerator(wordList, 5);
-            string guess = "PILOT";
+            string guess = "pilot";
             _word.RemoveGuessFromWordList(guess);
 
 
             Assert.False(_word.GuessExistsInWordList(guess));
-            guess = "SPILL";
+            guess = "spill";
             Assert.True(_word.GuessExistsInWordList(guess));
 
         }
