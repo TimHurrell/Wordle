@@ -8,13 +8,6 @@ namespace TestGameBoard
     {
 
 
-
-
-
-
-
-
-
         [Fact]
         public void GameBoardFirstRowIncorrectSecondRowCorrect()
         {
@@ -79,7 +72,6 @@ namespace TestGameBoard
             //_board.ListOfRows[0].Mark(_board.Answer, guess);
 
 
-
             Row _row2 = new Row();
             guess = "PILOT";
             _row2.Mark(guess, _board.Answer);
@@ -122,21 +114,10 @@ namespace TestGameBoard
 
             Assert.True(_board.TargetNumberOfGoes);
 
-
-
         }
-
-
-
-
-
-
 
 
     }
 
 }
 
-
-
-//

@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 
@@ -36,7 +34,7 @@ namespace GameBoard
 
                 else if (word.Contains(UppedCharacterG) && UppedCharacterA != UppedCharacterG) 
                 {
-                   MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Partial));
+                   MarkedGuess.Add(new KeyValuePair<char, Mark>(guess[i], global::Mark.Parti));
                   // GuessCorrect = false;
                 }
 
@@ -72,12 +70,5 @@ namespace GameBoard
 }
 
 
-/* Your Row class
-
-public List<KeyValuePair<char, Mark>> MarkedGuess { get; set; }
-
-the set can be made private as you will not be modifying this externally. This improves encapsulation
-
- */
 
 

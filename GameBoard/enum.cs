@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-public enum Mark
+﻿public enum Mark
 {
     Wrong,
-    Partial,
+    Parti,
     Right
 }

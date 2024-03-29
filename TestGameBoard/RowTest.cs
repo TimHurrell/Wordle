@@ -1,5 +1,4 @@
 using GameBoard;
-using System.Collections.Generic;
 using Xunit;
 
 namespace TestGameBoard
@@ -13,7 +12,6 @@ namespace TestGameBoard
         public void MarkRowAllWrong()
         {
             Row _row = new Row();
-            //bool test = _row.Mark("PILOT", "AHEAD");
             _row.Mark("PILOT", "AHEAD");
 
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[0].Value);
@@ -21,7 +19,6 @@ namespace TestGameBoard
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
-            //Assert.False(GuessCorrect(_row));
         }
 
 
@@ -32,7 +29,7 @@ namespace TestGameBoard
             Row _row = new Row();
             _row.Mark("PILOT", "TIMER");
 
-            Assert.Equal(Mark.Partial, _row.MarkedGuess[0].Value);
+            Assert.Equal(Mark.Parti, _row.MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
@@ -48,7 +45,7 @@ namespace TestGameBoard
             Row _row = new Row();
             _row.Mark("PILOt", "TIMER");
 
-            Assert.Equal(Mark.Partial, _row.MarkedGuess[0].Value);
+            Assert.Equal(Mark.Parti, _row.MarkedGuess[0].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
@@ -84,7 +81,6 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
             Assert.True(_row.GuessCorrect());
-            //Assert.True(test);
         }
 
 
@@ -101,7 +97,6 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
             Assert.True(_row.GuessCorrect());
-            //Assert.True(test);
         }
 
 
@@ -119,7 +114,6 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Right, _row.MarkedGuess[4].Value);
             Assert.True(_row.GuessCorrect());
-            //Assert.True(test);
         }
 
 
@@ -130,15 +124,8 @@ namespace TestGameBoard
             _row.Mark("pilot", "PILOT");
 
             Assert.True(_row.GuessCorrect());
-            //Assert.True(test);
         }
-
-
 
     }
 
 }
-
-
-
-//

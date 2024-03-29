@@ -7,12 +7,6 @@ namespace TestGameBoard
     public class WordGeneratorTest
     {
 
-
-       
-
-
-
-
         [Fact]
         public void FiveLetterWordFromListOnlyOneMember()
         {
@@ -120,7 +114,3 @@ namespace TestGameBoard
     }
 
 }
-
-
-
-//
