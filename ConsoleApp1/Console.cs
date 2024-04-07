@@ -16,7 +16,7 @@ namespace ConsoleApp
                 CreateWordListFromFile createwordlistfromfileinstance = new CreateWordListFromFile(); 
                 List<string> wordlistinstance = createwordlistfromfileinstance.CreateWordList(wordsfilepathinstance.GetWordFilePath()); 
                 WordListGenerator wordListForGameBoard = new WordListGenerator(wordlistinstance, 5); // Create another list with this list of words (why?)
-                Board newBoard = new Board(wordListForGameBoard.answer, 5); // create a game board which contains the answer and the number of attempts permitted
+                Board newBoard = new Board(wordListForGameBoard.answer, 10); // create a game board which contains the answer and the number of attempts permitted
                 while (newBoard.TargetNumberOfGoes == false && newBoard.IsWon() == false )
                 {
                     Row _row = new Row();

@@ -8,12 +8,6 @@ namespace GameBoard
     {
         public IList<KeyValuePair<char, Mark>> MarkedGuess { get; set; } = new List<KeyValuePair<char, Mark>>();
         
-        /*public bool GuessCorrect
-        {
-            get => MarkedGuess.All(pair => pair.Value == global::Mark.Right); private set { }
-        }
-        */
-
 
         public void Mark(string word, string guess)
         {
@@ -24,6 +18,7 @@ namespace GameBoard
                 char UppedCharacterG = char.ToUpper(guess[i]);
                 char UppedCharacterA = char.ToUpper(word[i]);
                 word = word.ToUpper();
+               // bool isUnique = word.Count(c => char.ToUpper(c) == char.ToUpper(UppedCharacterG)) == 1;
 
 
 
@@ -57,6 +52,8 @@ namespace GameBoard
             return MarkedGuess.All(pair => pair.Value == global::Mark.Right);
 
         }
+
+
 
 
 

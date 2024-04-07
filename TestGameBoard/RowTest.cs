@@ -40,7 +40,7 @@ namespace TestGameBoard
 
 
         [Fact]
-        public void MarkRowRightLetterWrongAndRightPositionWringCase()
+        public void MarkRowRightLetterWrongAndRightPositionWrongCase()
         {
             Row _row = new Row();
             _row.Mark("PILOt", "TIMER");
@@ -49,6 +49,20 @@ namespace TestGameBoard
             Assert.Equal(Mark.Right, _row.MarkedGuess[1].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[3].Value);
+            Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
+
+        }
+
+        [Fact]
+        public void MarkRowRightLetterWrongAndRightPositionWrongCaseWithSameLetter()
+        {
+            Row _row = new Row();
+            _row.Mark("PILOt", "STOOD");
+
+            Assert.Equal(Mark.Wrong, _row.MarkedGuess[0].Value);
+            Assert.Equal(Mark.Parti, _row.MarkedGuess[1].Value);
+            Assert.Equal(Mark.Wrong, _row.MarkedGuess[2].Value);
+            Assert.Equal(Mark.Right, _row.MarkedGuess[3].Value);
             Assert.Equal(Mark.Wrong, _row.MarkedGuess[4].Value);
 
         }
